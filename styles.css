@@ -977,7 +977,7 @@ footer {
     }
 
     .hero-section {
-        flex-direction: column-reverse;
+        flex-direction: column;
         text-align: center;
         padding-top: 120px;
     }
@@ -988,6 +988,10 @@ footer {
 
     .cta-buttons {
         justify-content: center;
+    }
+
+    .hero-image {
+        display: none;
     }
 
     .about-content {
