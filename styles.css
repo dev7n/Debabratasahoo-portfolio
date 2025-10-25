@@ -472,6 +472,11 @@ img {
     min-width: 300px;
 }
 
+.about-text p {
+    text-align: justify;
+    hyphens: auto; /* Helps with word spacing in justified text */
+}
+
 .about-text h3 {
     margin-top: 20px;
     margin-bottom: 15px;
@@ -744,6 +749,10 @@ img {
 .tab-btn.active::after {
     width: 100%;
 }
+.skills-tabs .tab-btn {
+    flex-shrink: 0; /* Prevent tabs from shrinking */
+    padding: 10px 15px; /* Add some horizontal padding */
+}
 
 .content-panel {
     display: none;
@@ -826,6 +835,7 @@ img {
 .timeline-content ul {
     list-style: disc;
     margin-left: 20px;
+    padding-left: 5px; /* Add some padding to prevent text from touching the edge */
 }
 
 .timeline-content li {
@@ -968,6 +978,7 @@ img {
 .contact-form {
     flex: 2;
     min-width: 300px;
+    max-width: 700px; /* Add a max-width to prevent the form from becoming too wide on large screens */
     display: flex;
     flex-direction: column;
     gap: 15px;
