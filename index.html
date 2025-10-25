@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Debabrata Sahoo - Portfolio</title>
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        script-src 'self'; 
+        style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; 
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; 
+        img-src 'self' data:;
+        form-action https://formspree.io;">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div id="preloader">
@@ -36,6 +43,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">AboutMe</a></li>
                 <li><a href="#accomplishments">Accomplishments</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -128,33 +136,52 @@
                     <p>My journey into cybersecurity began with a fascination for how systems work and a strong desire to protect them from malicious actors. I am constantly learning and adapting to the ever-evolving threat landscape, committed to staying ahead of emerging risks.</p>
                     <div class="about-tabs-container">
                         <div class="about-tabs">
-                            <button class="tab-btn active" data-target="skills-panel">Key Skills</button>
-                            <button class="tab-btn" data-target="certifications-panel">Certifications</button>
+                            <button class="tab-btn active" data-target="certifications-panel">Certifications</button>
                             <button class="tab-btn" data-target="achievements-panel">Achievements</button>
                         </div>
                         <div class="about-content-panels">
-                            <div class="content-panel active" id="skills-panel">
-                                <div class="skills-grid">
-                                    <ul>
-                                        <li><i class="fas fa-shield-alt"></i> Incident Response</li>
-                                        <li><i class="fas fa-network-wired"></i> Network Security</li>
-                                        <li><i class="fas fa-bug"></i> Vulnerability Management</li>
-                                        <li><i class="fas fa-lock"></i> Cryptography</li>
-                                        <li><i class="fas fa-code"></i> Scripting (Python, Bash)</li>
-                                        <li><i class="fas fa-cloud"></i> Cloud Security (AWS/Azure)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="content-panel" id="certifications-panel">
+                            <div class="content-panel active" id="certifications-panel">
                                 <ul class="certifications-list">
-                                    <li><i class="fas fa-certificate"></i> CompTIA Security+</li>
-                                    <li><i class="fas fa-certificate"></i> Certified Ethical Hacker (CEH)</li>
+                                    <li>
+                                        <span><i class="fas fa-certificate"></i> Ethical Hacking Essentials (EHE)</span>
+                                        <a href="#" class="cert-link" title="View Certificate" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-certificate"></i> Google Cybersecurity Professional Certificate </span>
+                                        <a href="#" class="cert-link" title="View Certificate" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-certificate"></i> Introduction to Cybersecurity by CISCO </span>
+                                        <a href="https://www.credly.com/badges/64d2a433-3e86-4df0-bbdf-16dc8f800a55/public_url" class="cert-link" title="View Certificate" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                                    </li>
+                                    <!-- <li>
+                                        <span><i class="fas fa-certificate"></i> Google Cybersecurity Professional Certificate </span>
+                                        <a href="#" class="cert-link" title="View Certificate" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-certificate"></i> Google Cybersecurity Professional Certificate </span>
+                                        <a href="#" class="cert-link" title="View Certificate" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-certificate"></i> Google Cybersecurity Professional Certificate </span>
+                                        <a href="#" class="cert-link" title="View Certificate" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-certificate"></i> Google Cybersecurity Professional Certificate </span>
+                                        <a href="#" class="cert-link" title="View Certificate" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-certificate"></i> Google Cybersecurity Professional Certificate </span>
+                                        <a href="#" class="cert-link" title="View Certificate" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                                    </li> -->
                                 </ul>
                             </div>
                             <div class="content-panel" id="achievements-panel">
                                 <ul class="achievements-list">
-                                    <li><i class="fas fa-award"></i> Certified Information Systems Security Professional (CISSP)</li>
-                                    <li><i class="fas fa-trophy"></i> Employee of the Quarter - TechCorp Solutions, Q3 2023</li>
+                                    <li><i class="fas fa-trophy"></i> Awarded Chief Minister's Gold Medal for representing Odisha at the All India Level Shooting Championship 2022.</li>
+                                    <li><i class="fas fa-medal"></i> BRONZE for 3rd position in 31st ALL INDIA G V MAVALANKAR SHOOTING CHAMPIONSHIP-2022 held at Asansol, Westbengal.</li>                                    
+                                    <li><i class="fas fa-award"></i> Represented Odisha Directorate in INTER DIRECTORATE SPORTS SHOOTING CHAMPIONSHIP-2022 at Chandigarh, Punjab.</li>
+                                    <li><i class="fas fa-star"></i> Commended by Deputy Director General of NCC Directorate Odisha for being in Top 30 shooters competing for IDSSC-2022.</li>
                                 </ul>
                             </div>
                         </div>
@@ -168,7 +195,7 @@
             <div class="accomplishments-container">
                 <div class="accomplishments-tabs">
                     <button class="tab-btn active" data-target="education-panel">Education</button>
-                    <button class="tab-btn" data-target="experience-panel">Experience</button>
+                    <button class="tab-btn" data-target="experience-panel">Workshops</button>
                 </div>
                 <div class="experience-content-panels">
                     <div class="content-panel active" id="education-panel">
@@ -176,11 +203,24 @@
                             <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-content">
-                                    <h3>B.Sc. Computer Science - University of Technology</h3>
-                                    <p class="timeline-date">Sep 2015 - Jun 2019</p>
+                                    <h3>B.Tech. Computer Science - SUIIT(NAAC Grade A)</h3>
+                                    <p>Sambalpur University Institute of Information Technology</p>
+                                    <p class="timeline-date">Sep 2021 - May 2025</p>
                                     <ul>
                                         <li>Specialized in network security and data privacy.</li>
-                                        <li>Developed a secure file transfer protocol as a final year project.</li>
+                                        <li>Developed a Drowsiness Detection System using OpenCV as a final year project.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>Higher Secondary Education (Science Stream)</h3>
+                                    <p>Dhenkanal Junior College, Dhenkanal</p>
+                                    <p class="timeline-date">Jun 2019 – Mar 2021</p>
+                                    <ul>
+                                        <li>Focused on Physics, Chemistry, Mathematics, and Biology.</li>
+                                        <li>Built a strong foundation in analytical thinking and problem-solving through academic and practical coursework.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -191,27 +231,81 @@
                             <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-content">
-                                    <h3>Cybersecurity Analyst - TechCorp Solutions</h3>
-                                    <p class="timeline-date">Jan 2022 - Present</p>
+                                    <h3>Cybersecurity Workshops & Training</h3>
+                                    <p class="timeline-date">2022 - Present</p>
                                     <ul>
-                                        <li>Led incident response efforts, reducing average resolution time by 15%.</li>
-                                        <li>Conducted regular vulnerability assessments and penetration testing.</li>
-                                        <li>Implemented security policies and procedures in alignment with industry standards.</li>
+                                        <li>Actively participated in various workshops focusing on ethical hacking, network defense, and secure coding practices.</li>
+                                        <li>Gained hands-on experience with industry-standard tools like Wireshark, Metasploit, and Nmap in controlled lab environments.</li>
+                                        <li>Completed several virtual labs and Capture The Flag (CTF) challenges to apply theoretical knowledge to practical scenarios.</li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <h3>Junior Security Engineer - Global Innovations</h3>
-                                    <p class="timeline-date">Jul 2019 - Dec 2021</p>
-                                    <ul>
-                                        <li>Monitored security systems and analyzed logs for suspicious activity.</li>
-                                        <li>Assisted in the deployment and configuration of security tools.</li>
-                                        <li>Provided security awareness training to employees.</li>
-                                    </ul>
-                                </div>
-                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section section-padding">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skills-tabs">
+                    <button class="tab-btn active" data-target="core-skills" title="Core Technical Skills"><i class="fas fa-cogs"></i></button>
+                    <button class="tab-btn" data-target="cyber-skills" title="Cybersecurity Skills"><i class="fas fa-shield-alt"></i></button>
+                    <button class="tab-btn" data-target="ai-ml-skills" title="AI & Machine Learning"><i class="fas fa-robot"></i></button>
+                    <button class="tab-btn" data-target="tools-skills" title="Programming & Tools"><i class="fas fa-code"></i></button>
+                    <button class="tab-btn" data-target="soft-skills" title="Soft & Analytical Skills"><i class="fas fa-lightbulb"></i></button>
+                </div>
+                <div class="skills-layout-container">
+                    <div id="skills-category-display">
+                        <span class="category-icon"></span>
+                        <span class="category-name"></span>
+                    </div>
+                    <div class="skills-content-panels">
+                        <div class="content-panel skills-grid active" id="core-skills">
+                            <ul>
+                                <li><i class="fas fa-network-wired"></i> Network Security</li>
+                                <li><i class="fab fa-linux"></i> Linux Environments</li>
+                                <li><i class="fab fa-windows"></i> Windows Server</li>
+                                <li><i class="fas fa-server"></i> System Administration</li>
+                                <li><i class="fas fa-project-diagram"></i> Network Protocols (TCP/IP)</li>
+                            </ul>
+                        </div>
+                        <div class="content-panel skills-grid" id="cyber-skills">
+                            <ul>
+                                <li><i class="fas fa-shield-alt"></i> Incident Response</li>
+                                <li><i class="fas fa-bug"></i> Vulnerability Management</li>
+                                <li><i class="fas fa-user-secret"></i> Penetration Testing</li>
+                                <li><i class="fas fa-file-alt"></i> Compliance (GDPR, ISO 27001)</li>
+                                <li><i class="fas fa-lock"></i> Cryptography</li>
+                                <li><i class="fas fa-cogs"></i> SIEM Tools (Splunk, ELK)</li>
+                            </ul>
+                        </div>
+                        <div class="content-panel skills-grid" id="ai-ml-skills">
+                            <ul>
+                                <li><i class="fas fa-robot"></i> Machine Learning Models</li>
+                                <li><i class="fas fa-brain"></i> Scikit-learn</li>
+                                <li><i class="fas fa-chart-pie"></i> Data Analysis (Pandas)</li>
+                                <li><i class="fas fa-layer-group"></i> TensorFlow / PyTorch</li>
+                            </ul>
+                        </div>
+                        <div class="content-panel skills-grid" id="tools-skills">
+                            <ul>
+                                <li><i class="fab fa-python"></i> Python</li>
+                                <li><i class="fas fa-terminal"></i> Bash Scripting</li>
+                                <li><i class="fab fa-docker"></i> Docker</li>
+                                <li><i class="fas fa-code-branch"></i> Git & GitHub</li>
+                                <li><i class="fab fa-aws"></i> AWS Security</li>
+                                <li><i class="fab fa-microsoft"></i> Azure Security</li>
+                            </ul>
+                        </div>
+                        <div class="content-panel skills-grid" id="soft-skills">
+                            <ul>
+                                <li><i class="fas fa-lightbulb"></i> Problem Solving</li>
+                                <li><i class="fas fa-chart-line"></i> Analytical Thinking</li>
+                                <li><i class="fas fa-users"></i> Team Collaboration</li>
+                                <li><i class="fas fa-file-alt"></i> Technical Reporting</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -269,11 +363,11 @@
             <h2 class="section-title">Contact Me</h2>
             <p class="contact-intro">I'm always open to discussing new projects, collaborations, or opportunities. Feel free to reach out!</p>
             <div class="contact-container">
-                <form class="contact-form" action="https://formspree.io/f/xgvlpwrj" method="POST">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="text" name="subject" placeholder="Subject">
-                    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+                <form class="contact-form" action="https://formspree.io/f/xgvlpwrj" method="POST" autocomplete="on">
+                    <input type="text" name="name" placeholder="Your Name" required autocomplete="name">
+                    <input type="email" name="email" placeholder="Your Email" required autocomplete="email">
+                    <input type="text" name="subject" placeholder="Subject" autocomplete="off">
+                    <textarea name="message" placeholder="Your Message" rows="6" required autocomplete="off"></textarea>
                     <p id="form-status"></p>
                     <button type="submit" class="btn primary-btn">Send Message</button>
                 </form>
@@ -282,8 +376,8 @@
                     <p><i class="fas fa-envelope"></i> <a href="mailto:debabratasahoo2706@gmail.com">debabratasahoo2706@gmail.com</a></p>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/debabratasahoo06/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github fa-2x"></i></a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="https://github.com/dev7n" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github fa-2x"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter fa-2x"></i></a>
                     </div>
                 </div>
             </div>

@@ -57,11 +57,21 @@ navLinks.forEach(link => {
 });
 
 // Scoped Tab functionality for multiple components
-const tabContainers = document.querySelectorAll('.accomplishments-container, .about-tabs-container');
+const tabContainers = document.querySelectorAll('.accomplishments-container, .about-tabs-container, .skills-container');
 
 tabContainers.forEach(container => {
     const tabs = container.querySelectorAll('.tab-btn');
     const contentPanels = container.querySelectorAll('.content-panel');
+
+    // Specific logic for the skills container
+    if (container.classList.contains('skills-container')) {
+        const activeTab = container.querySelector('.tab-btn.active');
+        const iconDisplay = container.querySelector('.category-icon');
+        const nameDisplay = container.querySelector('.category-name');
+        
+        iconDisplay.innerHTML = activeTab.querySelector('i').outerHTML;
+        nameDisplay.textContent = activeTab.title;
+    }
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -75,6 +85,15 @@ tabContainers.forEach(container => {
             // Activate the clicked tab and its corresponding panel
             tab.classList.add('active');
             if (targetPanel) targetPanel.classList.add('active');
+
+            // Update the title if we are in the skills container
+            if (container.classList.contains('skills-container')) {
+                const iconDisplay = container.querySelector('.category-icon');
+                const nameDisplay = container.querySelector('.category-name');
+
+                iconDisplay.innerHTML = tab.querySelector('i').outerHTML;
+                nameDisplay.textContent = tab.title;
+            }
         });
     });
 });

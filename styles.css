@@ -267,7 +267,7 @@ img {
 .nav-links a {
     font-family: var(--font-mono);
     font-weight: 400;
-    font-size: 1.1em;
+    font-size: 1em;
     position: relative;
     padding-bottom: 5px;
 }
@@ -478,10 +478,47 @@ img {
     color: var(--accent-color);
 }
 
+.skills-grid {
+    max-height: 240px; /* Set a max height for the skills list */
+    overflow-y: auto; /* Enable vertical scrolling when content overflows */
+    padding: 20px; /* Add padding to create the box */
+    /* Firefox scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.3s ease;
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Custom Scrollbar for Webkit browsers */
+.skills-grid::-webkit-scrollbar {
+    width: 8px;
+}
+.skills-grid::-webkit-scrollbar-track {
+    background: transparent; /* Make track transparent */
+    border-radius: 4px;
+}
+.skills-grid::-webkit-scrollbar-thumb {
+    background: transparent; /* Make thumb transparent by default */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.skills-grid:hover {
+    scrollbar-color: var(--secondary-text) var(--border-color); /* thumb and track for Firefox */
+}
+
 .skills-grid ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Use flexbox to easily add gaps between list items */
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+}
+
+.skills-grid:hover::-webkit-scrollbar-thumb {
+    background: var(--secondary-text); /* Show thumb on hover for Webkit */
 }
 
 .skills-grid li {
@@ -511,6 +548,78 @@ img {
     color: var(--primary-bg);
 }
 
+/* Skills Section */
+.skills-section {
+    background-color: var(--primary-bg);
+}
+
+.skills-layout-container {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+#skills-category-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the icon and name */
+    gap: 15px;
+    flex: 1;
+}
+
+#skills-category-display .category-icon {
+    font-size: 4em; /* Made the icon larger */
+    color: var(--accent-color);
+}
+
+#skills-category-display .category-name {
+    font-family: var(--font-mono);
+    font-size: 1.5em;
+    color: var(--accent-color);
+    font-weight: 600;
+    position: relative; /* Needed for the pseudo-element */
+}
+
+#skills-category-display .category-name::before {
+    content: '';
+    position: absolute;
+    top: -15px; /* Position it above the text, within the gap */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: var(--border-color); /* A light shade */
+}
+
+.skills-content-panels {
+    flex: 1;
+}
+
+.skills-grid {
+    /* width is no longer needed here */
+}
+.skills-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.skills-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: nowrap; /* Prevent tabs from wrapping */
+    overflow-x: auto; /* Allow horizontal scrolling */
+    padding-bottom: 10px; /* Space for scrollbar before hiding */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.skills-tabs .tab-btn i {
+    font-size: 1.5em; /* Make icons larger */
+}
+.skills-tabs::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
 .about-tabs-container {
     margin-top: 30px;
 }
@@ -531,22 +640,61 @@ img {
     padding-top: 10px;
 }
 
+.achievements-list,
+.certifications-list {
+    max-height: 200px; /* Adjust height for padding */
+    overflow-y: auto;
+    padding: 20px;
+    /* Firefox scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.3s ease;
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.achievements-list:hover,
+.certifications-list:hover {
+    scrollbar-color: var(--secondary-text) var(--border-color); /* thumb and track for Firefox */
+}
+
 .achievements-list li {
     font-family: var(--font-mono);
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.achievements-list li:last-child {
+    border-bottom: none;
 }
 
 .certifications-list li {
     font-family: var(--font-mono);
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center; /* Changed to center for better alignment */
+    gap: 8px; /* Add a small gap between the name and the link icon */
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.certifications-list li:last-child {
+    border-bottom: none;
+}
+
+.certifications-list li span {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+.cert-link {
+    color: var(--secondary-text);
+}
 
 /* Accomplishments Section */
 .accomplishments-section {
@@ -1076,8 +1224,19 @@ footer {
     .nav-links {
         width: 80%; /* Wider menu for smaller screens */
     }
-    .skills-grid ul {
-        grid-template-columns: 1fr; /* Stack skills on very small screens */
+    .skills-layout-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    #skills-category-display {
+        align-items: center; /* Center on mobile */
+        order: -1; /* Move title above the skill list on mobile */
+    }
+    .skills-content-panels {
+        width: 100%;
+    }
+    .skills-tabs {
+        justify-content: flex-start; /* Align to start for scrolling */
     }
 
     .project-card {
