@@ -56,6 +56,18 @@ navLinks.forEach(link => {
     });
 });
 
+// Close nav when clicking on the main content (prevents UI-spoofing)
+const mainContent = document.querySelector('main');
+if (mainContent) {
+    mainContent.addEventListener('click', () => {
+        if (nav.classList.contains('nav-active')) {
+            nav.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+            navLinks.forEach(item => item.style.animation = ''); // Reset animation
+        }
+    });
+}
+
 // Scoped Tab functionality for multiple components
 const tabContainers = document.querySelectorAll('.accomplishments-container, .about-tabs-container, .skills-container');
 
@@ -195,7 +207,7 @@ if (carouselWrapper) {
 // Animated Timeline in Hero Section
 const animatedTimeline = document.getElementById('animated-timeline');
 
-if (animatedTimeline) {
+if (animatedTimeline && animatedTimeline.querySelector('.timeline-milestones-wrapper')) {
     const wrapper = animatedTimeline.querySelector('.timeline-milestones-wrapper');
     const milestones = Array.from(animatedTimeline.querySelectorAll('.timeline-milestone'));
     const milestoneHeight = 90; // Must match the CSS height
@@ -203,42 +215,76 @@ if (animatedTimeline) {
     let currentIndex = 0;
     let autoScrollInterval;
 
-    function updateTimeline() {
-        // Calculate the offset to move the wrapper
-        const offset = -currentIndex * milestoneHeight;
-        wrapper.style.transform = `translateY(${offset}px)`;
+    // Clone items to create a seamless loop
+    for (let i = 0; i < visibleItems; i++) {
+        if (milestones[i]) {
+            const clone = milestones[i].cloneNode(true);
+            wrapper.appendChild(clone);
+        }
+    }
+    const allMilestones = Array.from(wrapper.querySelectorAll('.timeline-milestone'));
 
-        // Update active/inactive classes for visual feedback
-        milestones.forEach((milestone, index) => {
-            // The middle item of the visible set is considered the "most active"
-            const activeIndex = currentIndex + Math.floor(visibleItems / 2);
+    function updateTimeline() {
+        // Move the wrapper
+        wrapper.style.transition = 'transform 0.8s ease-in-out';
+        wrapper.style.transform = `translateY(${-currentIndex * milestoneHeight}px)`;
+
+        // Update active/inactive classes for visual feedback after a short delay to sync with transition
+        allMilestones.forEach((milestone, index) => {
+            const activeIndex = currentIndex + Math.floor(visibleItems / 2); // The middle item is active
             if (index === activeIndex) {
                 milestone.classList.remove('inactive');
             } else {
                 milestone.classList.add('inactive');
             }
         });
-
-        // Increment index for the next scroll
+        
         currentIndex++;
-        // If we reach the end, loop back to the start
-        if (currentIndex > milestones.length - visibleItems) {
-            currentIndex = 0;
+
+        // Reset to the beginning for a seamless loop
+        if (currentIndex >= milestones.length) {
+            // When the animation to the first cloned item finishes,
+            // instantly jump back to the real first item without a transition.
+            wrapper.addEventListener('transitionend', function resetLoop() {
+                currentIndex = 0;
+                wrapper.style.transition = 'none';
+                wrapper.style.transform = 'translateY(0px)';
+                // Remove the listener so it only runs once per loop
+                wrapper.removeEventListener('transitionend', resetLoop);
+            });
         }
     }
 
     function startTimelineScroll() {
         stopTimelineScroll(); // Ensure no multiple intervals are running
-        autoScrollInterval = setInterval(updateTimeline, 2500); // Scroll every 2.5 seconds
+        autoScrollInterval = setInterval(updateTimeline, 3000); // Scroll every 3 seconds
     }
 
     function stopTimelineScroll() {
         clearInterval(autoScrollInterval);
     }
 
-    // Initial call and start the interval
-    updateTimeline();
-    startTimelineScroll();
+    function initializeTimeline() {
+        // 1. Set the initial position to center the LAST item.
+        const lastItemOriginalIndex = milestones.length - 1;
+        const activeIndexInView = Math.floor(visibleItems / 2);
+        const initialOffset = (lastItemOriginalIndex - activeIndexInView) * -milestoneHeight;
+        wrapper.style.transition = 'none';
+        wrapper.style.transform = `translateY(${initialOffset}px)`;
+
+        // 2. Set the active state for the centered (last) item.
+        allMilestones.forEach((milestone, index) => {
+            milestone.classList.toggle('inactive', index !== lastItemOriginalIndex);
+        });
+
+        // 3. Start the animation loop after a brief pause.
+        // Set the currentIndex to the last item's position so the next
+        // updateTimeline() call correctly moves to the start of the loop.
+        currentIndex = milestones.length;
+        startTimelineScroll();
+    }
+
+    initializeTimeline();
 
     // Optional: Pause on hover
     animatedTimeline.addEventListener('mouseenter', stopTimelineScroll);

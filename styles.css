@@ -441,6 +441,11 @@ img {
     margin: 0;
 }
 
+.timeline-milestone:not(.inactive) .milestone-content p {
+    font-weight: 600; /* Make the text bolder */
+    color: var(--primary-text); /* Make the color stronger */
+}
+
 
 /* About Section */
 .about-section {
@@ -600,9 +605,6 @@ img {
     flex: 1;
 }
 
-.skills-grid {
-    /* width is no longer needed here */
-}
 .skills-container {
     display: flex;
     flex-direction: column;
