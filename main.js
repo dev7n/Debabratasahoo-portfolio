@@ -57,15 +57,18 @@ navLinks.forEach(link => {
 });
 
 // Close nav when clicking on the main content (prevents UI-spoofing)
-const mainContent = document.querySelector('main');
-if (mainContent) {
-    mainContent.addEventListener('click', () => {
-        if (nav.classList.contains('nav-active')) {
-            nav.classList.remove('nav-active');
-            burger.classList.remove('toggle');
-            navLinks.forEach(item => item.style.animation = ''); // Reset animation
-        }
-    });
+const contentAreas = document.querySelectorAll('main, footer');
+
+function closeMobileNav() {
+    if (nav.classList.contains('nav-active')) {
+        nav.classList.remove('nav-active');
+        burger.classList.remove('toggle');
+        navLinks.forEach(item => item.style.animation = ''); // Reset animation
+    }
+}
+
+if (contentAreas.length > 0) {
+    contentAreas.forEach(area => area.addEventListener('click', closeMobileNav));
 }
 
 // Scoped Tab functionality for multiple components

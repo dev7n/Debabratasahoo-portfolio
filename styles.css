@@ -667,6 +667,63 @@ img {
     scrollbar-color: var(--secondary-text) var(--border-color); /* thumb and track for Firefox */
 }
 
+.writeups-grid-embedded {
+    max-height: 240px; /* Match height of other panels */
+    overflow-y: auto;
+    padding-right: 10px; /* Space for scrollbar */
+    display: grid;
+    grid-template-columns: 1fr; /* Stack cards vertically */
+    gap: 20px;
+}
+
+.writeup-card {
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.writeup-card:hover {
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.writeup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 8px;
+}
+
+.writeup-header h3 {
+    color: var(--accent-color);
+    margin-bottom: 0;
+    font-size: 1.1em;
+}
+
+.writeup-link {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--secondary-text);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0; /* Prevents the link from shrinking */
+}
+
+.writeup-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.writeup-tags {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: var(--secondary-text);
+    margin-bottom: 10px;
+}
 .achievements-list li {
     font-family: var(--font-mono);
     display: flex;

@@ -6,11 +6,13 @@
     <title>Debabrata Sahoo - Portfolio</title>
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self'; 
-        script-src 'self'; 
+        script-src 'self';
         style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; 
         font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; 
         img-src 'self' data:;
-        form-action https://formspree.io;">
+        form-action https://formspree.io;
+        object-src 'none';
+        frame-ancestors 'none';">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet"> 
@@ -138,6 +140,7 @@
                         <div class="about-tabs">
                             <button class="tab-btn active" data-target="certifications-panel">Certifications</button>
                             <button class="tab-btn" data-target="achievements-panel">Achievements</button>
+                            <button class="tab-btn" data-target="writeups-panel">Writeups</button>
                         </div>
                         <div class="about-content-panels">
                             <div class="content-panel active" id="certifications-panel">
@@ -183,6 +186,28 @@
                                     <li><i class="fas fa-award"></i> Represented Odisha Directorate in INTER DIRECTORATE SPORTS SHOOTING CHAMPIONSHIP-2022 at Chandigarh.</li>
                                     <li><i class="fas fa-star"></i> Commended by Deputy Director General of NCC Directorate Odisha for being in Top 30 shooters competing for IDSSC-2022.</li>
                                 </ul>
+                            </div>
+                            <div class="content-panel" id="writeups-panel">
+                                <div class="writeups-grid-embedded">
+                                    <!-- Example Writeup Card 1 -->
+                                    <div class="writeup-card">
+                                        <div class="writeup-header">
+                                            <h3>Analysis of a Phishing Campaign</h3>
+                                            <a href="#" target="_blank" rel="noopener noreferrer" class="writeup-link"><i class="fas fa-book-open"></i> Read</a>
+                                        </div>
+                                        <p class="writeup-tags">Phishing, Threat Analysis, OSINT</p>
+                                        <p>A detailed breakdown of a recent phishing attack, from the initial email to payload delivery and mitigation.</p>
+                                    </div>
+                                    <!-- Example Writeup Card 2 -->
+                                    <div class="writeup-card">
+                                        <div class="writeup-header">
+                                            <h3>HackTheBox: "Lame" CTF Walkthrough</h3>
+                                            <a href="#" target="_blank" rel="noopener noreferrer" class="writeup-link"><i class="fas fa-book-open"></i> Read</a>
+                                        </div>
+                                        <p class="writeup-tags">CTF, Penetration Testing, Linux</p>
+                                        <p>A step-by-step guide on compromising the "Lame" machine, detailing enumeration, exploitation, and privilege escalation.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
