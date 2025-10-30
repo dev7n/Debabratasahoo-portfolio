@@ -6,13 +6,13 @@
 }
 
 :root {
-    --primary-bg: #FFFFFF;
-    --primary-text: #000000;
-    --secondary-text: #333333;
-    --accent-color: #1a1a1a; /* Darker black for accents */
-    --border-color: #EEEEEE;    
-    --hacker-green: #00FF41;
-    --shadow-color: rgba(0, 0, 0, 0.08);
+    --primary-bg: #121212; /* Deep, dark background */
+    --primary-text: #EAEAEA; /* Soft white for readability */
+    --secondary-text: #AAAAAA; /* Grey for less important text */
+    --accent-color: #E67E22; /* Premium, aesthetic orange */
+    --border-color: #2a2a2a; /* Subtle border color */
+    --hacker-green: #E67E22; /* Changed to match the new accent */
+    --shadow-color: rgba(0, 0, 0, 0.25); /* Deeper shadow for dark theme */
     --font-mono: 'IBM Plex Mono', monospace;
     --font-sans: 'Roboto', sans-serif;
 }
@@ -129,7 +129,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--primary-text); /* Dark background for premium theme */
+    background-color: #000000; /* Start with pure black for the preloader */
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -158,7 +158,7 @@ img {
     width: 8px;
     height: 10px;
     margin: 0 4px;
-    background-color: var(--primary-bg);
+    background-color: var(--hacker-green); /* Use accent color for bars */
     border-radius: 2px;
     animation: bar-wave 1.2s ease-in-out infinite;
 }
@@ -177,7 +177,7 @@ img {
 .preloader-logo {
     font-family: 'Chakra Petch', sans-serif;
     font-size: 4em;
-    color: var(--primary-bg);
+    color: var(--primary-text);
     display: none; /* Initially hidden */
     justify-content: center;
     align-items: center;
@@ -344,7 +344,7 @@ img {
 .hero-content .tagline {
     font-size: 1.5em;
     margin-bottom: 30px;
-    color: var(--secondary-text);
+    color: var(--primary-text);
 }
 
 .hero-content .highlight {
@@ -545,7 +545,7 @@ img {
 
 .skills-grid li:hover {
     background-color: var(--accent-color);
-    color: var(--primary-bg);
+    color: #000000;
     transform: translateY(-3px);
 }
 
@@ -555,7 +555,7 @@ img {
 }
 
 .skills-grid li:hover i {
-    color: var(--primary-bg);
+    color: #000000;
 }
 
 /* Skills Section */
@@ -762,7 +762,7 @@ img {
 
 /* Accomplishments Section */
 .accomplishments-section {
-    background-color: var(--border-color);
+    background-color: #1a1a1a; /* Slightly lighter dark section */
 }
 
 .accomplishments-container {
@@ -1017,7 +1017,7 @@ img {
 
 /* Contact Section */
 .contact-section {
-    background-color: var(--border-color);
+    background-color: #1a1a1a; /* Slightly lighter dark section */
 }
 
 .contact-intro {
@@ -1123,7 +1123,7 @@ img {
 
 /* Footer */
 footer {
-    background-color: var(--primary-text);
+    background-color: #000000;
     color: var(--primary-bg);
     text-align: center;
     padding: 30px 5%;
@@ -1159,7 +1159,7 @@ footer {
         right: 0;
         top: 70px; /* Adjust based on header height */
         height: calc(100vh - 70px);
-        background-color: var(--primary-text);
+        background-color: #181818;
         flex-direction: column;
         align-items: center;
         width: 60%;
@@ -1312,4 +1312,65 @@ footer {
     .project-card {
         flex-basis: 85%; /* 1 card on mobile, with a peek of the next */
     }
+}
+
+/* PDF Viewer Modal */
+.pdf-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1001; /* Above the nav bar */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* For Safari */
+    animation: fadeIn 0.3s ease;
+}
+
+.pdf-modal-content {
+    position: relative;
+    margin: 5vh auto;
+    padding: 0;
+    width: 90%;
+    max-width: 900px;
+    height: 90vh;
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.pdf-modal-close {
+    color: #ffffff;
+    position: absolute;
+    top: -35px;
+    right: -5px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.pdf-modal-close:hover,
+.pdf-modal-close:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+#pdf-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
 }

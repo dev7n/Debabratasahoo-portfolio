@@ -293,3 +293,41 @@ if (animatedTimeline && animatedTimeline.querySelector('.timeline-milestones-wra
     animatedTimeline.addEventListener('mouseenter', stopTimelineScroll);
     animatedTimeline.addEventListener('mouseleave', startTimelineScroll);
 }
+
+// PDF Certificate Modal Viewer
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('pdf-viewer-modal');
+    const iframe = document.getElementById('pdf-iframe');
+    const closeBtn = document.querySelector('.pdf-modal-close');
+    // Find all links that should open in the PDF modal
+    const certLinks = document.querySelectorAll('a.cert-link, .pdf-modal-trigger');
+
+    certLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const pdfUrl = link.getAttribute('href');
+            // Only open PDFs in the modal
+            if (pdfUrl.toLowerCase().endsWith('.pdf')) {
+                e.preventDefault(); // Prevent default link behavior ONLY for PDFs
+                iframe.setAttribute('src', pdfUrl);
+                modal.style.display = 'block';
+            }
+            // For other links, do nothing and let the browser open them in a new tab
+        });
+    });
+
+    // Function to close the modal
+    const closeModal = () => {
+        modal.style.display = 'none';
+        iframe.setAttribute('src', ''); // Clear src to stop any background processes
+    };
+
+    // Close the modal when the close button is clicked
+    closeBtn.addEventListener('click', closeModal);
+
+    // Close the modal when clicking outside the content area
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+});
